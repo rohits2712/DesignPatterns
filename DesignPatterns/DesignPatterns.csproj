@@ -47,6 +47,11 @@
     <Compile Include="Decorator\ConcreteComponent\CompactCar.cs" />
     <Compile Include="Decorator\ConcreteDecorator\LeatherSeats.cs" />
     <Compile Include="Decorator\Decorator\CarDecorator.cs" />
+    <Compile Include="Observer\ConcreteObserver\Fan.cs" />
+    <Compile Include="Observer\ConcreteSubject\Trump.cs" />
+    <Compile Include="Observer\ICelebrity.cs" />
+    <Compile Include="Observer\Observer\IFan.cs" />
+    <Compile Include="Observer\Subject\ICelebrity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

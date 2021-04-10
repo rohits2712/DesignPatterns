@@ -1,6 +1,8 @@
 ﻿using DesignPatterns.Decorator.Component;
 using DesignPatterns.Decorator.ConcreteComponent;
 using DesignPatterns.Decorator.ConcreteDecorator;
+using DesignPatterns.Observer.ConcreteObserver;
+using DesignPatterns.Observer.ConcreteSubject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,14 @@ namespace DesignPatterns
             Console.WriteLine($"{sampleCar.GetCarPrice():C2}");
             #endregion
 
+            #region Observer - Change in one object causes a change or action in another. 
+            var trump = new Trump("I love my wife");
+            var firstFan = new Fan("Rohit");
+            var secondFan = new Fan("Ram");
+            trump.AddFollower(firstFan);
+            trump.AddFollower(secondFan);
+            trump.Tweet = "I hate media";
+            #endregion
             Console.ReadLine();
         }
     }
