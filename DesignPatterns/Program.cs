@@ -13,11 +13,14 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            //Decorator - Using Composition to limit inheritance and simplify object relationships easier to maintain and manage.
+            #region Decorator - Using Composition to limit inheritance and simplify object relationships easier to maintain and manage.
+            //Inside ConcreteDecorator any number of features can be added to the car and price for the car can be updated.
             Car sampleCar = new CompactCar();
             sampleCar = new LeatherSeats(sampleCar);
             Console.WriteLine(sampleCar.GetDescription());
             Console.WriteLine($"{sampleCar.GetCarPrice():C2}");
+            #endregion
+
             Console.ReadLine();
         }
     }
