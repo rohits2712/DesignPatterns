@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Decorator.Component;
+﻿using DesignPatterns.Builder;
+using DesignPatterns.Decorator.Component;
 using DesignPatterns.Decorator.ConcreteComponent;
 using DesignPatterns.Decorator.ConcreteDecorator;
 using DesignPatterns.Observer.ConcreteObserver;
@@ -17,7 +18,7 @@ namespace DesignPatterns
         {
             #region Decorator - Using Composition to limit inheritance and simplify object relationships easier to maintain and manage.
             //Inside ConcreteDecorator any number of features can be added to the car and price for the car can be updated.
-            Car sampleCar = new CompactCar();
+            Decorator.Component.Car sampleCar = new CompactCar();
             sampleCar = new LeatherSeats(sampleCar);
             Console.WriteLine(sampleCar.GetDescription());
             Console.WriteLine($"{sampleCar.GetCarPrice():C2}");
@@ -30,6 +31,30 @@ namespace DesignPatterns
             trump.AddFollower(firstFan);
             trump.AddFollower(secondFan);
             trump.Tweet = "I hate media";
+            #endregion
+
+            #region Builder Pattern- Separate and reuse a specific process to build an object /use when constructing a complex object
+            //Director- construct ()
+            //Builder - Build part
+            //CarBuilder to construct two types of cars
+            //override the method of building a car in separate classes which derive from an abstract carbuilder
+            //create a list of carbuilder objects to specify the current known types of cars that can be built
+            //create a factory
+            var superBuilder = new SuperCarBuilder();
+            var notSoSsuperBuilder = new NotSoSuperCarBuilder();
+
+            var factory = new CarFactory();
+            var builders = new List<CarBuilder> { superBuilder, notSoSsuperBuilder };
+
+            foreach (var b in builders)
+            {
+
+                var c = factory.Build(b);
+                Console.WriteLine($"The car requested by " + $"{b.GetType().Name}:" + Environment.NewLine 
+                            + $"Horse Power: {c.HorsePower}" + Environment.NewLine
+                            + $"Impressive feature: {c.MostImpressiveFeature}" + Environment.NewLine
+                            + $"Top speed: {c.TopSpeedMPH} mph" + Environment.NewLine);
+            }
             #endregion
             Console.ReadLine();
         }
