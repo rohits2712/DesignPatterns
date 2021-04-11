@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Builder;
+﻿using DesignPatterns.Bridge;
+using DesignPatterns.Builder;
 using DesignPatterns.Decorator.Component;
 using DesignPatterns.Decorator.ConcreteComponent;
 using DesignPatterns.Decorator.ConcreteDecorator;
@@ -55,6 +56,22 @@ namespace DesignPatterns
                             + $"Impressive feature: {c.MostImpressiveFeature}" + Environment.NewLine
                             + $"Top speed: {c.TopSpeedMPH} mph" + Environment.NewLine);
             }
+            #endregion
+
+            #region Bridge Pattern- Used to separate an abstraction from its implementation so both can be modified independently
+            //Sending messages from sms or service without each affecting the other 
+            IMessageSender text = new TextSender();
+            IMessageSender web = new WebServiceSender();
+
+            Message message = new SystemMessage();
+            message.Subject = "A message";
+            message.Body = "hi there, please know this";
+            message.MessageSender = text;
+            message.Send();
+           
+            message.MessageSender = web;
+            message.Send();
+
             #endregion
             Console.ReadLine();
         }
