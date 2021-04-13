@@ -1,5 +1,6 @@
 ﻿using DesignPatterns.Bridge;
 using DesignPatterns.Builder;
+using DesignPatterns.ChainOfResponsibility;
 using DesignPatterns.Decorator.Component;
 using DesignPatterns.Decorator.ConcreteComponent;
 using DesignPatterns.Decorator.ConcreteDecorator;
@@ -71,6 +72,21 @@ namespace DesignPatterns
            
             message.MessageSender = web;
             message.Send();
+
+            #endregion
+
+            #region Chain of responsibility- Chain the receiving objects and pass the request along the chain until an object handles it.
+            //Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request
+            Approver Bobby = new Director();
+            Approver Sunny = new VicePresident();
+            Approver Dharam = new President();
+
+            Bobby.SetSuccessor(Sunny);
+            Sunny.SetSuccessor(Dharam);
+
+            Purchase P = new Purchase() { Amount = 10000, Number = 1 };
+            Bobby.ProcessRequest(P);
+
 
             #endregion
             Console.ReadLine();
