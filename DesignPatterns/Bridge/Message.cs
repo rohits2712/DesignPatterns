@@ -12,6 +12,11 @@ namespace DesignPatterns.Bridge
    public abstract class Message
     {
         public IMessageSender MessageSender { get; set; }
+
+        public Message(IMessageSender messageSender)
+        {
+            MessageSender = messageSender;
+        }
         public string Body { get; set; }
         public string Subject { get; set; }
         public abstract void Send();
@@ -22,6 +27,10 @@ namespace DesignPatterns.Bridge
     /// </summary>
     public class SystemMessage : Message
     {
+        public SystemMessage(IMessageSender messageSender) : base(messageSender)
+        {
+        }
+
         public override void Send()
         {
             MessageSender.SendMessage(Subject, Body);

@@ -63,7 +63,7 @@ namespace DesignPatterns
             IMessageSender text = new TextSender();
             IMessageSender web = new WebServiceSender();
 
-            Message message = new SystemMessage();
+            Message message = new SystemMessage(text);
             message.Subject = "A message";
             message.Body = "hi there, please know this";
             message.MessageSender = text;
