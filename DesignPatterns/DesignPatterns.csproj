@@ -46,6 +46,7 @@
     <Compile Include="Bridge\Message.cs" />
     <Compile Include="Builder\Car.cs" />
     <Compile Include="ChainOfResponsibility\Handler.cs" />
+    <Compile Include="Command\Command.cs" />
     <Compile Include="Decorator\Component\Car.cs" />
     <Compile Include="Decorator\ConcreteComponent\CompactCar.cs" />
     <Compile Include="Decorator\ConcreteDecorator\LeatherSeats.cs" />

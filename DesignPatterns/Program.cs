@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.Bridge;
 using DesignPatterns.Builder;
 using DesignPatterns.ChainOfResponsibility;
+using DesignPatterns.Command;
 using DesignPatterns.Decorator.Component;
 using DesignPatterns.Decorator.ConcreteComponent;
 using DesignPatterns.Decorator.ConcreteDecorator;
@@ -88,6 +89,22 @@ namespace DesignPatterns
             Bobby.ProcessRequest(P);
 
 
+            #endregion
+
+            #region Command - Wrap request as an object to be implemented later or invoke at different points in time.
+            //Encapsulate a request as an object, thereby letting you parameterize clients with different requests -queue or log  and support undoable operations
+            //Use an object to store required information to perform an action at any point in time.
+            var user = new User();
+            user.Compute('+', 100);
+            user.Compute('-', 50);
+            user.Compute('*', 10);
+            user.Compute('/', 2);
+
+            //undo
+            user.Undo(4);
+
+            //Redo 
+            user.Redo(3);
             #endregion
             Console.ReadLine();
         }
